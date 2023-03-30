@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AirportController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('/airports', [AirportController::class, 'index']);
+Route::get('/airports/{airport}', [AirportController::class, 'show']);
+Route::post('/airports', [AirportController::class, 'store']);
+Route::put('/airports/{airport}', [AirportController::class, 'update']);
+Route::delete('/airports/{airport}', [AirportController::class, 'destroy']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
