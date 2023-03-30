@@ -18,7 +18,7 @@ use App\Http\Controllers\AirportController;
 Route::get('/airports', [AirportController::class, 'index']);
 Route::get('/airports/{airport}', [AirportController::class, 'show']);
 Route::post('/airports', [AirportController::class, 'store']);
-Route::put('/airports/{airport}', [AirportController::class, 'update']);
+Route::post('/airports/{airport}', [AirportController::class, 'update']);
 Route::delete('/airports/{airport}', [AirportController::class, 'destroy']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

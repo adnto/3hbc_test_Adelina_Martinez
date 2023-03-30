@@ -48,11 +48,23 @@ class AirportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Airport $airport)
+    public function update(Request $request,  $id)
     {
-        $airport->update($request->all());
+        // print_r($request);
+        $airport = Airport::findOrFail($id);
 
-        return response()->json($airport, 200);
+        $request->validate([
+            'name' => 'required',
+            'code' => 'required',
+            'city' => 'required',
+        ]);
+    
+        $airport->update($request->all());
+    
+        return response()->json([
+            'message' => 'Airport updated successfully',
+            'data' => $airport
+        ], 200);
     }
 
     /**
