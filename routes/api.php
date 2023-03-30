@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AirportController;
 use App\Http\Controllers\AirlineController;
+use App\Http\Controllers\FlightController;
 
 
 /*
@@ -28,6 +29,13 @@ Route::get('airlines/{airline}', [AirlineController::class, 'show']);
 Route::post('airlines', [AirlineController::class, 'store']);
 Route::post('airlines/{airline}', [AirlineController::class, 'update']);
 Route::delete('airlines/{airline}', [AirlineController::class, 'destroy']);
+
+
+Route::get('/flights', [FlightController::class, 'index']);
+Route::get('/flights/{id}', [FlightController::class, 'show']);
+Route::post('/flights', [FlightController::class, 'store']);
+Route::post('/flights/{id}', [FlightController::class, 'update']);
+Route::delete('/flights/{id}', [FlightController::class, 'destroy']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
