@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AirportController;
+use App\Http\Controllers\AirlineController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,12 @@ Route::get('/airports/{airport}', [AirportController::class, 'show']);
 Route::post('/airports', [AirportController::class, 'store']);
 Route::post('/airports/{airport}', [AirportController::class, 'update']);
 Route::delete('/airports/{airport}', [AirportController::class, 'destroy']);
+
+Route::get('airlines', [AirlineController::class, 'index']);
+Route::get('airlines/{airline}', [AirlineController::class, 'show']);
+Route::post('airlines', [AirlineController::class, 'store']);
+Route::post('airlines/{airline}', [AirlineController::class, 'update']);
+Route::delete('airlines/{airline}', [AirlineController::class, 'destroy']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
