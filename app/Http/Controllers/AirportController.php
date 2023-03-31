@@ -14,7 +14,9 @@ class AirportController extends Controller
      */
     public function index()
     {
-        return Airport::all();
+        // return Airport::all();
+        $airports = Airport::all();
+        return response()->json($airports);
     }
 
     /**
